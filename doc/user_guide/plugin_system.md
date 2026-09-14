@@ -44,28 +44,6 @@ written from *N* formats × *M* transports to *N* + *M* plugins.
 
 ![DLite storage and protocol plugins.](../_static/storage-protocol.png)
 
-The diagram below shows how the families relate to each other and to
-DLite instances:
-
-```
-              save()                          load()
-  Instance ───────────────▶ Storage plugin ───────────────▶ bytes
-     ▲                        (driver)                        │
-     │ parse/serialise                                       │
-     │                                                       ▼
-     │                                                   Protocol
-     │                                                   plugin
-   Instance                                             (file/http/
-     ▲                                                  sftp/zip)
-     │        map()                                           │
-     │             ┌──────────────┐                          │
-     └─────────────│   Mapping    │                          │
-         instance  │    plugin    │                          │
-                   └──────────────┘                          │
-                                                              
-  bytes ◀──────────────────────────────────────────────────────┘
-```
-
 - A [storage plugin] (driver) parses a byte sequence into instances and
   serialises instances back to bytes.  Examples: `json`, `yaml`, `csv`,
   `hdf5`, `postgresql`.
