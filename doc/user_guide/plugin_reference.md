@@ -21,7 +21,7 @@ Storage plugins (drivers)
 | [json](#json)       | C    | generic | —            | `mode`, `single`, `uri-key`, `with-uuid`, `with-meta`, `arrays` |
 | [hdf5](#hdf5)       | C    | generic | HDF5 (source build) | `mode` |
 | [rdf](#rdf)         | C    | generic | Redland librdf (source build) | `mode`, `format` |
-| [yaml](#yaml)       | Python | generic | PyYAML | `mode`, `soft7`, `single`, `with_uuid`, `with_meta`, `with_parent`, `urikey` |
+| [yaml](#yaml)       | Python | generic | PyYAML | `mode`, `soft7`, `single`, `with-uuid`, `with-meta`, `with_parent`, `uri-key` |
 | [csv](#csv)         | Python | generic | pandas | `mode`, `meta`, `infer`, `format`, `pandas_opts`, `path`, `id` |
 | [bson](#bson)       | Python | generic | pymongo | `mode`, `soft7` |
 | [pyrdf](#pyrdf)     | Python | generic | rdflib | `mode`, `format` |
@@ -87,10 +87,14 @@ Serialises instances to/from YAML.
 | `mode` | `a`/`r`/`w` (see above). |
 | `soft7` | Whether to save using the SOFT7 format. |
 | `single` | Whether to save in single-instance form. |
-| `with_uuid` | Whether to include UUID when saving. |
-| `with_meta` | Whether to always include "meta" (even for metadata). |
+| `with-uuid` | Whether to include UUID when saving. |
+| `with-meta` | Whether to always include "meta" (even for metadata). |
 | `with_parent` | Whether to include parent info for transactions. |
-| `urikey` | Whether the URI is the preferred key in multi-instance format. |
+| `uri-key` | Whether the URI is the preferred key in multi-instance format. |
+
+The option names `with_uuid`, `with_meta` and `urikey` are deprecated
+aliases for `with-uuid`, `with-meta` and `uri-key`, respectively
+(see issue [#886]).
 
 ### csv
 
@@ -313,3 +317,4 @@ docstring, which is the authoritative documentation:
 [scikit-image]: https://scikit-image.org/
 [jinja2]: https://jinja.palletsprojects.com/
 [DLite repository]: https://github.com/SINTEF/dlite
+[#886]: https://github.com/SINTEF/dlite/issues/886
